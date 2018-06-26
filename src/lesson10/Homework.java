@@ -11,16 +11,6 @@ public class Homework {
         this.worker = worker;
     }
 
-    static class Worker {
-        String profession;
-        int age;
-
-        public Worker(String profession, int age) {
-            this.profession = profession;
-            this.age = age;
-        }
-    }
-
     public static void main(String[] args) {
         Homework list = new Homework("Paul", new Homework.Worker("barmen", 43));
         Homework list1 = new Homework("Alex", new Homework.Worker("manager", 34));
@@ -38,10 +28,19 @@ public class Homework {
             //Set<String> unigueProfession = new HashSet<>(); // skaiciuoja unikalus elementus sarase
             System.out.println("Profession list and age: ");
             for (Homework x_list : name_list) {
-                System.out.println(x_list.worker.profession);
+                System.out.printf("%s ", x_list.worker.profession);
                 System.out.println(x_list.worker.age);
             }
-}
+            }
 
+    static class Worker {
+        String profession;
+        int age;
+
+        public Worker(String profession, int age) {
+            this.profession = profession;
+            this.age = age;
         }
+    }
+}
 
