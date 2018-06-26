@@ -11,7 +11,7 @@ public class Cars implements Comparable<Cars>{
     private String carOwnerSurname;
 
     public Cars(String carNumber, String carModel, String carOwnerName, String carOwnerSurname) {
-        super();
+        //super();
         this.carNumber = carNumber;
         this.carModel = carModel;
         this.carOwnerName = carOwnerName;
@@ -22,62 +22,43 @@ public class Cars implements Comparable<Cars>{
         return carNumber;
     }
 
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
-    }
-
     public String getCarModel() {
         return carModel;
-    }
-
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
     }
 
     public String getCarOwnerName() {
         return carOwnerName;
     }
 
-    public void setCarOwnerName(String carOwnerName) {
-        this.carOwnerName = carOwnerName;
-    }
-
     public String getCarOwnerSurname() {
         return carOwnerSurname;
-    }
-
-    public void setCarOwnerSurname(String carOwnerSurname) {
-        this.carOwnerSurname = carOwnerSurname;
     }
 
     public static Comparator<Cars> getCarNameComparator() {
         return CarsNameComparator;
     }
 
-    public static void setCarNameComparator(Comparator<Cars> carNameComparator) {
-        CarsNameComparator = carNameComparator;
-    }
-
     public int compareTo(Cars compareCars) {
 
-        int compareNames = carOwnerName.compareTo(carOwnerSurname);
+        int compareNames = carOwnerName.compareTo(carOwnerName);
 
         return compareNames;
-
-
     }
 
-    public static Comparator<Cars> CarsNameComparator
-            = new Comparator<Cars>() {
+    public static Comparator<Cars> CarsNameComparator;
 
-        public int compare(Cars car1, Cars car2) {
+    static {
+        CarsNameComparator = new Comparator<Cars>() {
 
-            String carName1 = car1.getCarOwnerName().toUpperCase();
-            String carName2 = car2.getCarOwnerName().toUpperCase();
+            public int compare(Cars car1, Cars car2) {
 
-            return carName1.compareTo(carName2);
+                String carName1 = car1.getCarOwnerName().toUpperCase();
+                String carName2 = car2.getCarOwnerName().toUpperCase();
 
-        }
+                return carName1.compareTo(carName2);
 
-    };
+            }
+
+        };
+    }
 }
