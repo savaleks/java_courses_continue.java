@@ -11,11 +11,10 @@ Box klaseje aprasyti metoda, kuris atspausdintu jos turini (pvz. jei ideta pica 
 Naujoje klaseje (pvz. PizzaMain) sukurti dezute, ideti i ja pica su padazu ir patikrinti dezutes turini.
  */
 
-public class PizzaMain {
+class PizzaMain {
     public static void main(String[] args) {
-        System.out.println("Sauces list:");
-        for(EnumDemo.Sauce sauce_list : EnumDemo.Sauce.values()){
+        Pizza order = new Pizza("Margarita");
+        Box<Pizza, EnumDemo.Sauce> box = new Box<>(order, EnumDemo.Sauce.MIX);
+        box.showContent();
 
-        System.out.println(sauce_list.toString() +" > " + sauce_list.getDescription() + ".");
-    }
 }}

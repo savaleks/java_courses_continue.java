@@ -1,18 +1,23 @@
 package lesson13;
 
-public class EnumDemo {
+class EnumDemo {
     public enum Sauce{
         MILD("soft flavour"),
         SPICY("mexican spicy sauce"),
         MIX("half-spicy sauce with dill");
 
-        private String description;
+        private final String description;
 
         Sauce(String description) {
             this.description = description;
         }
 
-        public String getDescription() {
+        String getDescription() {
+            return description;
+        }
+
+        @Override
+        public String toString() {
             return description;
         }
     }
