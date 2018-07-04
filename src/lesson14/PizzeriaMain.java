@@ -31,23 +31,26 @@ import lesson14.food.Tortilla;
 import lesson14.food.Wrap;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Scanner;
 
 public class PizzeriaMain {
     public static void main(String[] args) {
-        Drink beer = new Beer("Utenos", 0.5, 1.5);
-        Drink tea = new Tea("Pasaka prie lauzo", 1.20, true);
-        Drink coffee = new Coffee("Arabika",2.5, true);
-        Drink water = new Water("Vytautas mineral SPA", true, 1.20);
-        Drink softDring = new SoftDrink("Fanta", 2.5);
+        Drink beer = new Beer("alus: Utenos Premium", 0.5, 1.5);
+        Drink tea = new Tea("arbata: Pasaka prie lauzo", 1.20, true);
+        Drink coffee = new Coffee("kava: Arabika Gold",2.5, true);
+        Drink water = new Water("mineralinis vanduo: Vytautas mineral SPA", true, 1.20);
+        Drink softDring = new SoftDrink("gaivusis gerimas: Fanta New Taste", 2.5);
 //        beer.selectDrink();
 
-        Food pizza = new Pizza("Margarita", 3.5, "medium");
-        Food wrap = new Wrap("wrap1", 3.7);
-        Food tortilla = new Tortilla("Tortilla1", 5.6);
-
+        Food pizza = new Pizza("piza: Margarita", 3.5, "medium");
+        Food wrap = new Wrap("wrap: Double Power", 3.7);
+        Food tortilla = new Tortilla("tortilla: Mexicano", 5.6);
 //        pizza.selectFood();
+
+       // List<Sauce> sauces = new ArrayList<>();
+        EnumSet<Sauce> sauces = EnumSet.allOf( Sauce.class );
 
         List<Drink> drink = new ArrayList<>();
         drink.add(beer);
@@ -60,12 +63,15 @@ public class PizzeriaMain {
         food.add(pizza);
         food.add(wrap);
         food.add(tortilla);
-        int i=1;
-        int d=1;
+        int i=1;//maisto eileskumas
+        int d=1;//gerimo eileskumas
+        int s=1;//padazo eileskumas
 
         //List<Integer> order = new ArrayList<>();
 
-        System.out.println("Pasirinkite patekala: ");
+        //System.out.println( "Padazai : " + sauces );
+
+        System.out.println("Issirinkite maista(kaina eurais): ");
 //        Scanner scanner = new Scanner(System.in);
 //        int i1 = scanner.nextInt();
 
@@ -80,7 +86,15 @@ public class PizzeriaMain {
 
         food.get(i1-1);
 
+        System.out.println("Issirinkite padaza(kaina 0.5 euro):");
+        for (Sauce o: sauces){
+            System.out.println(s+ " "+o);
+            s++;
+        }
+        Scanner scanner2 = new Scanner(System.in);
+        int i3 = scanner2.nextInt();
 
+        System.out.println("Issirinkite gerima(kaina eurais):");
         for (Drink y : drink){
 
             System.out.println(d+ " " + y.getName()+" "+y.getPrice());
@@ -89,6 +103,12 @@ public class PizzeriaMain {
 
         Scanner scanner1 = new Scanner(System.in);
         int i2 = scanner1.nextInt();
+
+        drink.get(i2-1);
+
+        System.out.println("Jusu uzsakymo kaina: " + food.get(i1-1).getPrice()+ " + "+"0.5"+" + " + drink.get(i2-1).getPrice()+
+        " = " + (food.get(i1-1).getPrice()+drink.get(i2-1).getPrice()+ 0.5) + " eu.");
+
     }
 
 }

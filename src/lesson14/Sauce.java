@@ -6,7 +6,8 @@ public enum Sauce {
     MIX("half-spicy sauce with garlic");
 
     private String description;
+
     Sauce( String description) {
-      this.description = description;
+        this.description = description;
     }
 }
