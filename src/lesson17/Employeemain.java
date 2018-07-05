@@ -15,6 +15,7 @@ kiek kartų išmokėta.
  */
 
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Employeemain {
@@ -25,6 +26,7 @@ public class Employeemain {
         list.add(new Person("Tom", "Tomlison", 1335));
         list.add(new Person("Lee", "Rudd", 1430));
 
+        //numberSalary(list);
         System.out.println("Sorting by Name");
         List<Person> slist = list.stream().sorted().collect(Collectors.toList());
         slist.forEach(e -> System.out.println("Name:"+ e.getName()+", Surname: "+e.getLastName()+", Salary: "+e.getSalary() + "eu."));
@@ -33,13 +35,20 @@ public class Employeemain {
 
         System.out.println("Sorting by Salary");
         slist = list.stream().sorted(Comparator.comparing(Person::getSalary)).collect(Collectors.toList());
-        slist.forEach(e -> System.out.println("Name:"+ e.getName()+", Surname: "+e.getLastName()+", Age:"+e.getSalary() + "eu."));
+        slist.forEach(e -> System.out.println("Name:"+ e.getName()+", Surname: "+e.getLastName()+", Age: "+e.getSalary() + "eu."));
 
         System.out.println("------------------------------");
 
-       // System.out.println("Sorting by getting Salaries number");
-        //nepaskaiciuota
+
+        System.out.println("Sorting by getting Salaries number");
+        numberSalary(list);
+
     }
+    public static void numberSalary(List<Person> list){
+        Map<String, Long> addSalaries = list.stream().collect(Collectors.groupingBy(a->a.getName(), Collectors.counting()));
+
+        addSalaries.forEach((k, v) -> System.out.println(k + ": " + v + " time."));
+     }
 }
 
 class Person implements Comparable<Person>{

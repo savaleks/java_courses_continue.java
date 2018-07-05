@@ -110,5 +110,4 @@ public class PizzeriaMain {
         " = " + (food.get(i1-1).getPrice()+drink.get(i2-1).getPrice()+ 0.5) + " eu.");
 
     }
-
 }
