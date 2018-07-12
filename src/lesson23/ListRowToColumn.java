@@ -15,7 +15,8 @@ class ListRowToColumn {
             eilute = bufferedReader.readLine();
         }
         bufferedReader.close();
-        String emails = tekstas.replaceAll(",", "\n");
+        String mysz2 = tekstas.replaceAll("\\s","");
+        String emails = mysz2.replaceAll(",", "\n");
         System.out.println(emails);
     }
 }
